@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
 
     val solver = Part2(file)
 
-    println("Game ID sum = ${solver.result}")
+    println("Products sum = ${solver.result}")
     println()
 
     println("END")
