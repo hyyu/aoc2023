@@ -10,6 +10,9 @@ fun main(args: Array<String>) {
     val filename = args[0]
     val file = File(filename)
 
+    println("File: $filename")
+    println()
+
     val solver = Part2(file)
 
     println("Calibration values sum = ${solver.result}")

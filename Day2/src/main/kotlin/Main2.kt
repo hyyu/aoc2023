@@ -13,9 +13,9 @@ fun main(args: Array<String>) {
     println("File: $filename")
     println()
 
-    val solver = Part1(file)
+    val solver = Part2(file)
 
-    println("Calibration values sum = ${solver.result}")
+    println("Game ID sum = ${solver.result}")
     println()
 
     println("END")
