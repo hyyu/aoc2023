@@ -1,3 +1,5 @@
+package firstpart
+
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -13,10 +15,14 @@ fun main(args: Array<String>) {
     println("File: $filename")
     println()
 
-    val solver = Part2(file)
+    Part1().let { solver ->
+        solver.parse(file)
+        solver.calculateResult()
 
-    println("Calibration values sum = ${solver.result}")
-    println()
+        println("Calibration values sum = ${solver.result}")
+        println()
+    }
+
 
     println("END")
 }
