@@ -1,10 +1,10 @@
 package firstpart
 
-import controller.CalibrationFIleController
+import controller.CalibrationFileController
 import parsing.CalibrationFileParser
 import java.io.File
 
-class Part1 : CalibrationFIleController {
+class Part1 : CalibrationFileController {
 
     var result = 0
         private set
@@ -18,10 +18,14 @@ class Part1 : CalibrationFIleController {
 
     override fun parse(inputFile: File) {
         inputFile.forEachLine { line ->
-            parser.findDigit(line).let { digit ->
-                calibrationValues.add(digit)
-            }
+            parser.findCalibrationValue(line).let { calibrationValues.add(it) }
         }
     }
+
+    override fun findFirstDigit(line: String): Int? =
+        runCatching { line.first { it.isDigit() } }.getOrNull()?.digitToInt()
+
+    override fun findLastDigit(line: String): Int? =
+        runCatching { line.last { it.isDigit() } }.getOrNull()?.digitToInt()
 
 }

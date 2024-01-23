@@ -1,79 +1,46 @@
 package secondpart
 
+import controller.CalibrationFileController
+import parsing.CalibrationFileParser
 import java.io.File
 
-class Part2(inputFile: File) {
+class Part2 : CalibrationFileController {
 
     var result = -1
 
-    private val wordDigits: Map<String, Int> = mapOf(
-        Pair("one", 1),
-        Pair("two", 2),
-        Pair("three", 3),
-        Pair("four", 4),
-        Pair("five", 5),
-        Pair("six", 6),
-        Pair("seven", 7),
-        Pair("eight", 8),
-        Pair("nine", 9),
-    )
+    private val parser = CalibrationFileParser(this)
+    private val calibrationValues: ArrayList<Int> = arrayListOf()
 
-    init {
-        result = solve(inputFile)
+    override fun calculateResult() {
+        result = calibrationValues.sum()
     }
 
-    private fun solve(inputFile: File): Int {
-        var sum = 0
+    override fun parse(inputFile: File) {
         inputFile.forEachLine { line ->
-            val a: Int? = line.firstDigitOrNull()
-            val b: Int? = line.lastDigitOrNull()
-            val calValue = when {
-                a == null && b == null -> 0
-                a == null -> (b?.times(10) ?: 0) + (b ?: 0)
-                b == null -> a * 10 + a
-                else -> a * 10 + b
-            }
-            sum += calValue
+            parser.findCalibrationValue(line).let { calibrationValues.add(it) }
         }
-        return sum
     }
 
-    private fun String.firstDigitOrNull(): Int? {
-        for (i in this.indices) {
-            val c = this[i]
-            if (c.isDigit())
-                return c.intValue()
+    override fun findFirstDigit(line: String): Int? {
+        for (i in line.indices) {
+            line[i].takeIf { it.isDigit() }
+                ?.let { return it.digitToInt() }
 
-            wordDigits.forEach {
-                val delta = i + it.key.length
-                if (delta <= length) {
-                    val substring = substring(i, delta)
-                    if (substring == it.key) {
-                        return it.value
-                    }
-                }
-            }
+            parser.findDigitInDictionary(i, line)?.let { return it }
         }
+
         return null
     }
 
-    private fun String.lastDigitOrNull(): Int? {
-        for (i in this.indices.reversed()) {
-            val c = this[i]
-            if (c.isDigit())
-                return c.intValue()
+    override fun findLastDigit(line: String): Int? {
+        for (i in line.indices.reversed()) {
+            line[i].takeIf { it.isDigit() }
+                ?.let { return it.digitToInt() }
 
-            wordDigits.forEach {
-                val delta = i + it.key.length
-                if (delta <= length) {
-                    if (substring(i, delta) == it.key)
-                        return it.value
-                }
-            }
+            parser.findDigitInDictionary(i, line)?.let { return it }
         }
+
         return null
     }
-
-    private fun Char.intValue(): Int = toString().toInt()
 
 }
