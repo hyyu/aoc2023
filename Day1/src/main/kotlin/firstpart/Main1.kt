@@ -3,11 +3,9 @@ package firstpart
 import java.io.File
 
 fun main(args: Array<String>) {
-    println("START")
-    println()
+    start()
 
-    if (args.isEmpty())
-        return
+    args.ifEmpty { return finish() }
 
     val filename = args[0]
     val file = File(filename)
@@ -23,6 +21,14 @@ fun main(args: Array<String>) {
         println()
     }
 
+    finish()
+}
 
+private fun start() {
+    println("START")
+    println()
+}
+
+private fun finish() {
     println("END")
 }
