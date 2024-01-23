@@ -29,7 +29,6 @@ class Part2 : CalibrationFileController {
 
             parser.findDigitInDictionary(i, line)?.let { return it }
         }
-
         return null
     }
 
@@ -40,7 +39,6 @@ class Part2 : CalibrationFileController {
 
             parser.findDigitInDictionary(i, line)?.let { return it }
         }
-
         return null
     }
 
