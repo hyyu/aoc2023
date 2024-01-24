@@ -21,18 +21,15 @@ class CalibrationFileParser(private val controller: CalibrationFileController) {
             (controller.findFirstDigit(line) to controller.findLastDigit(line))
         )
 
-    fun findDigitInDictionary(i: Int, line: String, ): Int? {
-        wordDigits.forEach { entry ->
-            (i + entry.key.length).takeIf { it <= line.length }
+    fun findDigitInDictionary(i: Int, line: String): Int? =
+        wordDigits.firstNotNullOfOrNull { (key, value) ->
+            (i + key.length).takeIf { it <= line.length }
                 ?.let { delta ->
                     line.substring(i, delta)
-                        .takeIf { it == entry.key }
-                        ?.let { return entry.value }
+                        .takeIf { it == key }
+                        ?.let { value }
                 }
         }
-
-        return null
-    }
 
     private fun buildCalibrationValue(digitPair: Pair<Int?, Int?>): Int = digitPair.let { (a, b) ->
         when {
