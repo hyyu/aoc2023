@@ -1,3 +1,5 @@
+package secondpart
+
 import java.io.File
 
 class Part2(inputFile: File) {
