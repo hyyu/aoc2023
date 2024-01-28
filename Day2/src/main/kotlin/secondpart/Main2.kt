@@ -1,3 +1,5 @@
+package secondpart
+
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -13,10 +15,13 @@ fun main(args: Array<String>) {
     println("File: $filename")
     println()
 
-    val solver = Part1(file)
+    Part2().let { solver ->
+        solver.parse(file)
+        solver.calculateResult()
 
-    println("Game ID sum = ${solver.result}")
-    println()
+        println("Products sum = ${solver.result}")
+        println()
+    }
 
     println("END")
 }
