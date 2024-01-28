@@ -21,8 +21,8 @@ interface GameValidRunsController {
      *
      * @param colorCounts The turn's color counts
      *
-     * @return true if the turn is valid, false otherwise
+     * @return true if the turn is invalid, false otherwise
      */
-    fun isTurnValid(colorCounts: List<String>): Boolean
+    fun isTurnWrong(colorCounts: List<String>): Boolean
 
 }

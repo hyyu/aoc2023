@@ -29,10 +29,10 @@ class Part1 : GameValidRunsController {
         }
     }
 
-    override fun isTurnValid(colorCounts: List<String>): Boolean =
+    override fun isTurnWrong(colorCounts: List<String>): Boolean =
         colorCounts.any { colorQuantityString ->
             parser.parseColor(colorQuantityString).let { (colorValue, colorName) ->
-                !colorMaxCounts.any { colorName == it.key && colorValue > it.value }
+                colorMaxCounts.any { colorName == it.key && colorValue > it.value }
             }
         }
 

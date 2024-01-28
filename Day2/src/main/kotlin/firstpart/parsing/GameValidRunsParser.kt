@@ -11,7 +11,7 @@ class GameValidRunsParser(private val controller: GameValidRunsController) {
     fun evaluateGameRun(gameId: Int, gameRun: List<String>): Int? {
         gameRun.forEach { cubeSet ->
             splitColors(cubeSet).let { cubes ->
-                cubes.takeIf { controller.isTurnValid(it) }
+                cubes.takeIf { controller.isTurnWrong(it) }
                     ?.let { return null }
             }
         }

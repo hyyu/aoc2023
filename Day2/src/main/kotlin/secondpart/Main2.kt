@@ -15,10 +15,13 @@ fun main(args: Array<String>) {
     println("File: $filename")
     println()
 
-    val solver = Part2(file)
+    Part2().let { solver ->
+        solver.parse(file)
+        solver.calculateResult()
 
-    println("Products sum = ${solver.result}")
-    println()
+        println("Products sum = ${solver.result}")
+        println()
+    }
 
     println("END")
 }
