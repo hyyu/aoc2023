@@ -22,9 +22,7 @@ class Part2 : EngineController {
     /**
      * Calculates the result in the context of Part 1
      */
-    override fun calculateResult() {
-        result = gears.sumOf { it.first.value * it.second.value }
-    }
+    override fun calculateResult() = gears.sumOf { it.first.value * it.second.value }
 
     /**
      * Launches the input file's parsing

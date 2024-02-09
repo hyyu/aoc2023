@@ -7,14 +7,10 @@ import java.io.File
 
 class Part2 : GameMinValuesController {
 
-    var result = 0
-
     private val parser = GameMinValuesParser(this)
     private val productsList: ArrayList<Int> = arrayListOf()
 
-    override fun calculateResult() {
-        result = productsList.sum()
-    }
+    override fun calculateResult(): Int = productsList.sum()
 
     override fun parse(inputFile: File) {
         inputFile.forEachLine { line ->

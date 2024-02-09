@@ -10,7 +10,7 @@ interface EngineController {
     /**
      * Override to implement result's calculation
      */
-    fun calculateResult()
+    fun calculateResult(): Int
 
     /**
      * Override to implement the launch of input parsing

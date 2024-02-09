@@ -23,9 +23,7 @@ class Part1 : EngineController {
     /**
      * Calculates the result in the context of Part 1
      */
-    override fun calculateResult() {
-        result = partNumbers.sumOf { it.value }
-    }
+    override fun calculateResult() = partNumbers.sumOf { it.value }
 
     /**
      * Launches the input file's parsing
