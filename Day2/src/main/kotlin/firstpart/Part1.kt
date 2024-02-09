@@ -6,8 +6,6 @@ import java.io.File
 
 class Part1 : GameValidRunsController {
 
-    var result = 0
-
     private val colorMaxCounts = mapOf(
         "red" to 12,
         "green" to 13,
@@ -17,9 +15,7 @@ class Part1 : GameValidRunsController {
     private val parser = GameValidRunsParser(this)
     private val validGameRuns: ArrayList<Int> = arrayListOf()
 
-    override fun calculateResult() {
-        result = validGameRuns.sum()
-    }
+    override fun calculateResult() = validGameRuns.sum()
 
     override fun parse(inputFile: File) {
         inputFile.forEachLine { line ->

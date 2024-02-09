@@ -15,9 +15,8 @@ fun main(args: Array<String>) {
 
     Part1().let { solver ->
         solver.parse(file)
-        solver.calculateResult()
 
-        println("Game ID sum = ${solver.result}")
+        println("Game ID sum = ${solver.calculateResult()}")
         println()
     }
 
