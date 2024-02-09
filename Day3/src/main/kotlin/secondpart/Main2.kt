@@ -17,9 +17,8 @@ fun main(args: Array<String>) {
 
     Part2().let { solver ->
         solver.parse(file)
-        solver.calculateResult()
 
-        println("Gear ratios sum = ${solver.result}")
+        println("Gear ratios sum = ${solver.calculateResult()}")
         println()
     }
 
