@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
         solver.parse(file)
         solver.calculateResult()
 
-        println("Calibration values sum = ${solver.result}")
+        println("Calibration values sum = ${solver.calculateResult()}")
         println()
     }
 

@@ -6,15 +6,10 @@ import java.io.File
 
 class Part2 : CalibrationFileController {
 
-    var result = -1
-    private set
-
     private val parser = CalibrationFileParser(this)
     private val calibrationValues: ArrayList<Int> = arrayListOf()
 
-    override fun calculateResult() {
-        result = calibrationValues.sum()
-    }
+    override fun calculateResult(): Int = calibrationValues.sum()
 
     override fun parse(inputFile: File) {
         inputFile.forEachLine { line ->
